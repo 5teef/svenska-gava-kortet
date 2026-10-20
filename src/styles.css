@@ -152,3 +152,11 @@
 @utility bg-gold-gradient { background: var(--gradient-gold); }
 @utility shadow-gold { box-shadow: var(--shadow-gold); }
 @utility bg-hero-fade { background: var(--gradient-hero-fade); }
+
+@utility card-pattern { background-image: radial-gradient(circle at 1px 1px, oklch(1 0 0 / 12%) 1px, transparent 0); background-size: 14px 14px; }
+@utility card-zalando { background: linear-gradient(135deg, oklch(0.96 0.005 90), oklch(0.86 0.01 90)); color: oklch(0.2 0.02 60); }
+@utility card-hm { background: linear-gradient(135deg, oklch(0.6 0.23 27), oklch(0.45 0.2 25)); color: oklch(0.99 0 0); }
+@utility card-ahlens { background: linear-gradient(135deg, oklch(0.25 0 0), oklch(0.12 0 0)); color: oklch(0.97 0 0); }
+@utility card-bokadirekt { background: linear-gradient(135deg, oklch(0.8 0.08 350), oklch(0.6 0.12 350)); color: oklch(0.18 0.03 350); }
+@utility card-bodystore { background: linear-gradient(135deg, oklch(0.6 0.15 150), oklch(0.42 0.12 155)); color: oklch(0.99 0 0); }
+@utility card-mcd { background: linear-gradient(135deg, oklch(0.55 0.21 27), oklch(0.42 0.18 25)); color: oklch(0.88 0.17 90); }
