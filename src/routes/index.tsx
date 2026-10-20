@@ -17,12 +17,12 @@ export const Route = createFileRoute("/")({
 });
 
 const stores = [
-  { name: "Zalando", cat: "Mode", domain: "zalando.se" },
-  { name: "H&M", cat: "Mode", domain: "hm.com" },
-  { name: "Åhléns", cat: "Skönhet & hem", domain: "ahlens.se" },
-  { name: "Bokadirekt", cat: "Spa & behandlingar", domain: "bokadirekt.se" },
-  { name: "Bodystore", cat: "Hälsa", domain: "bodystore.com" },
-  { name: "McDonald's", cat: "Mat", domain: "mcdonalds.se" },
+  { name: "Zalando", cat: "Mode", domain: "zalando.se", theme: "card-zalando" },
+  { name: "H&M", cat: "Mode", domain: "hm.com", theme: "card-hm" },
+  { name: "Åhléns", cat: "Skönhet & hem", domain: "ahlens.se", theme: "card-ahlens" },
+  { name: "Bokadirekt", cat: "Spa & behandlingar", domain: "bokadirekt.se", theme: "card-bokadirekt" },
+  { name: "Bodystore", cat: "Hälsa", domain: "bodystore.com", theme: "card-bodystore" },
+  { name: "McDonald's", cat: "Mat", domain: "mcdonalds.se", theme: "card-mcd" },
 ];
 
 const steps = [
@@ -98,22 +98,34 @@ function Index() {
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {stores.map((s) => (
               <a key={s.name} href="#" className="group block">
-                <div className="relative aspect-[1.586] overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-secondary via-card to-background p-6 shadow-gold transition duration-300 group-hover:-translate-y-2 group-hover:rotate-[-1deg] group-hover:border-primary">
-                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/15 blur-2xl transition group-hover:bg-primary/30" />
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent transition duration-700 group-hover:translate-x-full" />
+                <div className={`${s.theme} relative aspect-[1.586] overflow-hidden rounded-2xl p-6 shadow-gold transition duration-300 group-hover:-translate-y-2 group-hover:rotate-[-1deg]`}>
+                  <div className="card-pattern absolute inset-0 opacity-60" />
+                  <div className="absolute -right-16 -bottom-16 h-56 w-56 rounded-full border-[28px] border-current opacity-10" />
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-foreground/20 to-transparent transition duration-700 group-hover:translate-x-full" />
                   <div className="relative flex h-full flex-col justify-between">
                     <div className="flex items-start justify-between">
-                      <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl bg-foreground p-2 shadow-lg">
-                        <img src={`https://www.google.com/s2/favicons?domain=${s.domain}&sz=128`} alt={`${s.name} logotyp`} className="h-full w-full object-contain" loading="lazy" />
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-foreground p-1.5 shadow-lg">
+                          <img src={`https://www.google.com/s2/favicons?domain=${s.domain}&sz=128`} alt={`${s.name} logotyp`} className="h-full w-full object-contain" loading="lazy" />
+                        </div>
+                        <p className="text-2xl font-extrabold tracking-tight">{s.name}</p>
                       </div>
-                      <Gift className="h-6 w-6 text-primary" />
+                      <span className="text-[10px] font-bold uppercase tracking-[0.25em] opacity-70">Gift card</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-8 w-11 rounded-md bg-gold-gradient shadow-md" />
+                      <p className="font-mono text-sm tracking-[0.2em] opacity-70">•••• •••• 4892</p>
                     </div>
                     <div className="flex items-end justify-between">
                       <div>
-                        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Presentkort</p>
-                        <p className="mt-1 text-2xl font-extrabold">{s.name}</p>
+                        <p className="text-[10px] uppercase tracking-[0.25em] opacity-70">Presentkort</p>
+                        <p className="text-sm font-semibold">{s.cat}</p>
                       </div>
-                      <div className="h-8 w-11 rounded-md bg-gold-gradient opacity-90" />
+                      <div className="flex gap-1.5">
+                        {["250", "500", "1000"].map((a) => (
+                          <span key={a} className="rounded-full border border-current/30 bg-current/10 px-2.5 py-1 text-xs font-bold">{a} kr</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
