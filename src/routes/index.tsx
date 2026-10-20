@@ -105,7 +105,7 @@ function Index() {
             {stores.map((s) => (
               <a key={s.name} href="#" className="group block">
                 <div className="relative aspect-[1.586] overflow-hidden rounded-2xl ring-1 ring-primary/30 shadow-gold transition duration-300 group-hover:-translate-y-2 group-hover:rotate-[-1deg]">
-                  <img src={s.img} alt={`${s.name} presentkort`} className="absolute inset-0 h-full w-full object-cover object-left-top" loading="lazy" />
+                  <img src={s.img} alt={`${s.name} presentkort`} className="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" />
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-foreground/25 to-transparent transition duration-700 group-hover:translate-x-full" />
                 </div>
                 <div className="mt-4 flex items-center justify-between px-1">
