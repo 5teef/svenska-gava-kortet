@@ -1,6 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Store, CreditCard, Mail, Gift, ShieldCheck, Zap } from "lucide-react";
 import hero from "@/assets/hero.jpg";
+import zalando from "@/assets/card-zalando.jpg";
+import hm from "@/assets/card-hm.jpg";
+import ahlens from "@/assets/card-ahlens.jpg";
+import bokadirekt from "@/assets/card-bokadirekt.jpg";
+import bodystore from "@/assets/card-bodystore.jpg";
+import mcd from "@/assets/card-mcd.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,12 +23,12 @@ export const Route = createFileRoute("/")({
 });
 
 const stores = [
-  { name: "Zalando", cat: "Mode", domain: "zalando.se", theme: "card-zalando" },
-  { name: "H&M", cat: "Mode", domain: "hm.com", theme: "card-hm" },
-  { name: "Åhléns", cat: "Skönhet & hem", domain: "ahlens.se", theme: "card-ahlens" },
-  { name: "Bokadirekt", cat: "Spa & behandlingar", domain: "bokadirekt.se", theme: "card-bokadirekt" },
-  { name: "Bodystore", cat: "Hälsa", domain: "bodystore.com", theme: "card-bodystore" },
-  { name: "McDonald's", cat: "Mat", domain: "mcdonalds.se", theme: "card-mcd" },
+  { name: "Zalando", cat: "Mode", img: zalando },
+  { name: "H&M", cat: "Mode", img: hm },
+  { name: "Åhléns", cat: "Skönhet & hem", img: ahlens },
+  { name: "Bokadirekt", cat: "Spa & behandlingar", img: bokadirekt },
+  { name: "Bodystore", cat: "Hälsa", img: bodystore },
+  { name: "McDonald's", cat: "Mat", img: mcd },
 ];
 
 const steps = [
@@ -98,36 +104,9 @@ function Index() {
           <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {stores.map((s) => (
               <a key={s.name} href="#" className="group block">
-                <div className={`${s.theme} relative aspect-[1.586] overflow-hidden rounded-2xl p-6 shadow-gold transition duration-300 group-hover:-translate-y-2 group-hover:rotate-[-1deg]`}>
-                  <div className="card-pattern absolute inset-0 opacity-60" />
-                  <div className="absolute -right-16 -bottom-16 h-56 w-56 rounded-full border-[28px] border-current opacity-10" />
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-foreground/20 to-transparent transition duration-700 group-hover:translate-x-full" />
-                  <div className="relative flex h-full flex-col justify-between">
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-foreground p-1.5 shadow-lg">
-                          <img src={`https://www.google.com/s2/favicons?domain=${s.domain}&sz=128`} alt={`${s.name} logotyp`} className="h-full w-full object-contain" loading="lazy" />
-                        </div>
-                        <p className="text-2xl font-extrabold tracking-tight">{s.name}</p>
-                      </div>
-                      <span className="text-[10px] font-bold uppercase tracking-[0.25em] opacity-70">Gift card</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="h-8 w-11 rounded-md bg-gold-gradient shadow-md" />
-                      <p className="font-mono text-sm tracking-[0.2em] opacity-70">•••• •••• 4892</p>
-                    </div>
-                    <div className="flex items-end justify-between">
-                      <div>
-                        <p className="text-[10px] uppercase tracking-[0.25em] opacity-70">Presentkort</p>
-                        <p className="text-sm font-semibold">{s.cat}</p>
-                      </div>
-                      <div className="flex gap-1.5">
-                        {["250", "500", "1000"].map((a) => (
-                          <span key={a} className="rounded-full border border-current/30 bg-current/10 px-2.5 py-1 text-xs font-bold">{a} kr</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                <div className="relative aspect-[1.586] overflow-hidden rounded-2xl ring-1 ring-primary/30 shadow-gold transition duration-300 group-hover:-translate-y-2 group-hover:rotate-[-1deg]">
+                  <img src={s.img} alt={`${s.name} presentkort`} className="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" />
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-foreground/25 to-transparent transition duration-700 group-hover:translate-x-full" />
                 </div>
                 <div className="mt-4 flex items-center justify-between px-1">
                   <span className="text-sm text-muted-foreground">{s.cat}</span>
