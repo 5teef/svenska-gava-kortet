@@ -2,6 +2,8 @@
 @source "../src";
 @import "tw-animate-css";
 
+@theme inline { --font-sans: "Plus Jakarta Sans", sans-serif; --color-gold: var(--primary); }
+
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -62,26 +64,29 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --radius: 1rem;
+  --background: oklch(0.2 0.04 160);
+  --foreground: oklch(0.97 0.01 90);
+  --card: oklch(0.25 0.045 160);
+  --card-foreground: oklch(0.97 0.01 90);
+  --popover: oklch(0.25 0.045 160);
+  --popover-foreground: oklch(0.97 0.01 90);
+  --primary: oklch(0.8 0.13 85);
+  --primary-foreground: oklch(0.2 0.04 160);
+  --secondary: oklch(0.3 0.05 160);
+  --secondary-foreground: oklch(0.97 0.01 90);
+  --muted: oklch(0.28 0.04 160);
+  --muted-foreground: oklch(0.78 0.03 120);
+  --accent: oklch(0.8 0.13 85);
+  --accent-foreground: oklch(0.2 0.04 160);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.8 0.13 85 / 18%);
+  --input: oklch(0.8 0.13 85 / 25%);
+  --ring: oklch(0.8 0.13 85);
+  --gradient-gold: linear-gradient(135deg, oklch(0.86 0.12 90), oklch(0.72 0.14 75));
+  --gradient-hero-fade: linear-gradient(90deg, oklch(0.2 0.04 160) 0%, oklch(0.2 0.04 160 / 85%) 30%, transparent 60%);
+  --shadow-gold: 0 12px 40px -12px oklch(0.8 0.13 85 / 55%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -142,3 +147,8 @@
     color: var(--color-foreground);
   }
 }
+
+@utility text-gold-gradient { background: var(--gradient-gold); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@utility bg-gold-gradient { background: var(--gradient-gold); }
+@utility shadow-gold { box-shadow: var(--shadow-gold); }
+@utility bg-hero-fade { background: var(--gradient-hero-fade); }
