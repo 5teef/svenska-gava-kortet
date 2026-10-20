@@ -17,12 +17,12 @@ export const Route = createFileRoute("/")({
 });
 
 const stores = [
-  { name: "Zalando", cat: "Mode" },
-  { name: "H&M", cat: "Mode" },
-  { name: "Åhléns", cat: "Skönhet & hem" },
-  { name: "Bokadirekt", cat: "Spa & behandlingar" },
-  { name: "Bodystore", cat: "Hälsa" },
-  { name: "McDonald's", cat: "Mat" },
+  { name: "Zalando", cat: "Mode", domain: "zalando.se" },
+  { name: "H&M", cat: "Mode", domain: "hm.com" },
+  { name: "Åhléns", cat: "Skönhet & hem", domain: "ahlens.se" },
+  { name: "Bokadirekt", cat: "Spa & behandlingar", domain: "bokadirekt.se" },
+  { name: "Bodystore", cat: "Hälsa", domain: "bodystore.com" },
+  { name: "McDonald's", cat: "Mat", domain: "mcdonalds.se" },
 ];
 
 const steps = [
@@ -87,19 +87,43 @@ function Index() {
         </div>
       </section>
 
-      <section id="butiker" className="mx-auto max-w-7xl px-6 py-24">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">Populära butiker</p>
-        <h2 className="mt-3 text-4xl font-extrabold tracking-tight">Välj en favorit</h2>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {stores.map((s) => (
-            <a key={s.name} href="#" className="group flex items-center justify-between rounded-2xl border border-border bg-card p-7 transition hover:-translate-y-1 hover:border-primary hover:shadow-gold">
-              <div>
-                <p className="text-2xl font-bold">{s.name}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{s.cat}</p>
-              </div>
-              <ArrowRight className="h-5 w-5 text-primary transition group-hover:translate-x-1" />
-            </a>
-          ))}
+      <section id="butiker" className="relative overflow-hidden py-28">
+        <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">Populära butiker</p>
+            <h2 className="mt-3 text-4xl font-extrabold tracking-tight md:text-5xl">Välj en <span className="text-gold-gradient">favorit</span></h2>
+            <p className="mx-auto mt-4 max-w-lg text-muted-foreground">Presentkort från 100 kr till 2 000 kr – levererat direkt i mejlen.</p>
+          </div>
+          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {stores.map((s) => (
+              <a key={s.name} href="#" className="group block">
+                <div className="relative aspect-[1.586] overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-secondary via-card to-background p-6 shadow-gold transition duration-300 group-hover:-translate-y-2 group-hover:rotate-[-1deg] group-hover:border-primary">
+                  <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/15 blur-2xl transition group-hover:bg-primary/30" />
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-foreground/10 to-transparent transition duration-700 group-hover:translate-x-full" />
+                  <div className="relative flex h-full flex-col justify-between">
+                    <div className="flex items-start justify-between">
+                      <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl bg-foreground p-2 shadow-lg">
+                        <img src={`https://www.google.com/s2/favicons?domain=${s.domain}&sz=128`} alt={`${s.name} logotyp`} className="h-full w-full object-contain" loading="lazy" />
+                      </div>
+                      <Gift className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Presentkort</p>
+                        <p className="mt-1 text-2xl font-extrabold">{s.name}</p>
+                      </div>
+                      <div className="h-8 w-11 rounded-md bg-gold-gradient opacity-90" />
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4 flex items-center justify-between px-1">
+                  <span className="text-sm text-muted-foreground">{s.cat}</span>
+                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary">Välj belopp <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></span>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
